@@ -10,7 +10,7 @@
         android:id="@+id/button3"
         android:layout_width="205dp"
         android:layout_height="157dp"
-        android:text="Button"
+        android:text="Couleur 1"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="218dp" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/button4"
         android:layout_width="205dp"
         android:layout_height="157dp"
-        android:text="Button"
+        android:text="Couleur 2"
         tools:layout_editor_absoluteX="210dp"
         tools:layout_editor_absoluteY="218dp" />
 
@@ -32,7 +32,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:font-size="100"
         android:text="Projet Led"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="155dp"
