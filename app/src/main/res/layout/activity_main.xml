@@ -18,7 +18,7 @@
         android:id="@+id/button4"
         android:layout_width="205dp"
         android:layout_height="157dp"
-        android:text="Couleur 2"
+        android:text="Couleur 3"
         tools:layout_editor_absoluteX="210dp"
         tools:layout_editor_absoluteY="218dp" />
 
