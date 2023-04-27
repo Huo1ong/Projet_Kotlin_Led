@@ -1,3 +1,21 @@
 <resources>
+    <!-- Nom Application -->
     <string name="app_name">Projet_Kotlin_Led</string>
-</resources>
+
+    <!-- TextView - EditText -->
+    <string name="titre">Projet Terminal - Projet Technologique</string>
+    <string name="sous_titre">Projet LEDs - Guillou Quentin</string>
+    <string name="login">Login</string>
+    <string name="mdp">Mot de passe</string>
+    <string name="couleur">Couleurs</string>
+
+    <!-- Boutons -->
+    <string name="btn_Cycle_Couleur1">Cycle de couleurs n°1</string>
+    <string name="btn_Cycle_Couleur2">Cycle de couleurs n°2</string>
+    <string name="btn_Cycle_Couleur3">Cycle de couleurs n°3</string>
+    <string name="btn_Cycle_Couleur4">Cycle de couleurs n°4</string>
+    <string name="btn_Valider">Valider</string>
+    <string name="btn_Logout">Logout</string>
+    <string name="btn_Paramètres">Paramètres</string>
+    <string name="btn_Annuler">Annuler</string>
+    </resources>

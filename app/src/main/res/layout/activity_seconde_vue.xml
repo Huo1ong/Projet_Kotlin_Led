@@ -11,7 +11,7 @@
         android:id="@+id/textView_Titre1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Projet Terminal - Projet Technologique"
+        android:hint="@string/titre"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
@@ -27,7 +27,7 @@
         android:id="@+id/textView_Titre2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Projet LEDs - Guillou Quentin"
+        android:hint="@string/sous_titre"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -39,96 +39,83 @@
         app:layout_constraintVertical_bias="0.065" />
 
     <TextView
-        android:id="@+id/textView_Texte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Texte"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
-
-    <EditText
-        android:id="@+id/editText_Texte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212" />
-
-    <TextView
         android:id="@+id/textView_Image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Images"
+        android:hint="@string/couleur"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284" />
+        app:layout_constraintVertical_bias="0.171" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_Cycle_Couleur1"
         android:layout_width="144dp"
         android:layout_height="106dp"
-        android:text="Cycle de couleurs n°1"
+        android:hint="@string/btn_Cycle_Couleur1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.275" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btn_Cycle_Couleur2"
         android:layout_width="144dp"
         android:layout_height="106dp"
-        android:text="Cycle de couleurs n°4"
+        android:hint="@string/btn_Cycle_Couleur2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.556" />
+        app:layout_constraintVertical_bias="0.275" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_Cycle_Couleur3"
         android:layout_width="144dp"
         android:layout_height="106dp"
-        android:text="Cycle de couleurs n°3"
+        android:hint="@string/btn_Cycle_Couleur3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.556" />
+        app:layout_constraintVertical_bias="0.432" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_Cycle_Couleur4"
         android:layout_width="144dp"
         android:layout_height="106dp"
-        android:text="Cycle de couleurs n°2"
+        android:hint="@string/btn_Cycle_Couleur4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.432" />
+
+
+    <Button
+        android:id="@+id/btn_Parametres"
+        android:layout_width="112dp"
+        android:layout_height="35dp"
+        android:background="#576D75"
+        android:hint="@string/btn_Paramètres"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.725" />
 
     <TextView
         android:id="@+id/textTest"
@@ -143,51 +130,22 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692" />
-
-    <Button
-        android:id="@+id/btn_Valider_Fonctionnalite"
-        android:layout_width="100dp"
-        android:layout_height="49dp"
-        android:background="#576D75"
-        android:text="Valider"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+        app:layout_constraintVertical_bias="0.62" />
 
     <Button
         android:id="@+id/btn_Deconnexion"
         android:layout_width="96dp"
         android:layout_height="35dp"
         android:background="#576D75"
-        android:text="Logout"
-        android:textColor="@color/black"
+        android:hint="@string/btn_Logout"
+        android:textColor="@color/white"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
-
-    <Button
-        android:id="@+id/btn_Parametres"
-        android:layout_width="112dp"
-        android:layout_height="35dp"
-        android:background="#576D75"
-        android:text="Paramètres"
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.725" />
 
     <ImageView
         android:id="@+id/imageView"
