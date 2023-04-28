@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import okhttp3.*
 import org.json.JSONObject
@@ -15,9 +16,12 @@ class PremiereVue : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_premiere_vue)
 
-        val identifiant = "votre identifiant ici"
-        val mdp = "votre mot de passe ici"
-        sendLoginRequest(identifiant, mdp)
+        val buttonConnexion = findViewById<Button>(R.id.btn_Valider_Connexion)
+        buttonConnexion.setOnClickListener {
+            val identifiant = findViewById<EditText>(R.id.editText_Login).text.toString()
+            val mdp = findViewById<EditText>(R.id.editText_Mdp).text.toString()
+            sendLoginRequest(identifiant, mdp)
+        }
     }
 
     fun sendLoginRequest(identifiant: String, mdp: String) {
@@ -27,7 +31,7 @@ class PremiereVue : AppCompatActivity() {
             .add("mdp", mdp)
             .build()
         val request = Request.Builder()
-            .url("http://localhost/projet_leds/connexion.php")
+            .url("http://172.16.7.236:8080/projet_leds/connexion.php")
             .post(formBody)
             .build()
 
