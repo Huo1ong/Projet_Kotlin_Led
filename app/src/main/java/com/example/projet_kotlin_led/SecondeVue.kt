@@ -1,4 +1,10 @@
 package com.example.projet_kotlin_led
+/**
+@file SecondeVue.kt
+@author Guillou Quentin
+@version du 30/04/23
+ */
+
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

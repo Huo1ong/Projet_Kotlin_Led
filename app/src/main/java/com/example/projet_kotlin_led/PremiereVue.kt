@@ -1,3 +1,9 @@
+/**
+    @file PremiereVue.kt
+    @author Guillou Quentin
+    @version du 30/04/23
+ */
+
 package com.example.projet_kotlin_led
 
 import android.content.Intent
@@ -18,14 +24,18 @@ class PremiereVue : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_premiere_vue)
 
+        // Initialisation du bouton de connexion et ajout d'un listener sur le clic du bouton
         val buttonConnexion = findViewById<Button>(R.id.btn_Valider_Connexion)
         buttonConnexion.setOnClickListener {
+            // Récupération de l'identifiant et du mot de passe saisis par l'utilisateur
             val identifiant = findViewById<EditText>(R.id.editText_Login).text.toString()
             val mdp = findViewById<EditText>(R.id.editText_Mdp).text.toString()
+            // Envoi de la demande de connexion au serveur via une fonction dédiée
             sendLoginRequest(identifiant, mdp)
         }
     }
 
+    // Fonction qui affiche une boîte de dialogue d'erreur en cas d'échec de connexion
     fun showErrorDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Erreur")
@@ -35,8 +45,10 @@ class PremiereVue : AppCompatActivity() {
         alertDialog.show()
     }
 
+    // Fonction qui envoie la demande de connexion au serveur
     fun sendLoginRequest(identifiant: String, mdp: String) {
         val client = OkHttpClient()
+        // Construction de la requête POST avec les paramètres d'identifiant et de mot de passe
         val formBody = FormBody.Builder()
             .add("identifiant", identifiant)
             .add("mdp", mdp)
@@ -46,19 +58,19 @@ class PremiereVue : AppCompatActivity() {
             .post(formBody)
             .build()
 
-        Log.d("DEBUG1", "Sending login request with identifiant=$identifiant, mdp=$mdp")
+        // Envoi de la demande de connexion au serveur
         client.newCall(request).enqueue(object : Callback {
             // Code pour traiter la réponse de l'API
             override fun onResponse(call: Call, response: Response) {
-                Log.d("DEBUG2", "Received response: ${response.code}")
+                // Récupération de la réponse du serveur
                 val responseBody = response.body?.string()
-                Log.d("DEBUG3", "Response body: $responseBody")
+                // Traitement de la réponse du serveur
                 handleLoginResponse(responseBody)
             }
 
+            // Gestion des erreurs en cas d'échec de la demande de connexion
             override fun onFailure(call: Call, e: IOException) {
                 // Gestion des erreurs
-                Log.e("ERROR1", "Login request failed", e)
                 runOnUiThread {
                     val builder = AlertDialog.Builder(this@PremiereVue)
                     builder.setMessage("Problème de connexion")
@@ -69,6 +81,7 @@ class PremiereVue : AppCompatActivity() {
         })
     }
 
+    //prend en paramètre une chaîne de caractères responseBody, qui est la réponse renvoyée par une API suite à une requête
     fun handleLoginResponse(responseBody: String?) {
         if (responseBody == null) {
             runOnUiThread {
