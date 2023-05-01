@@ -39,6 +39,31 @@
         app:layout_constraintVertical_bias="0.065" />
 
     <Button
+        android:id="@+id/btn_Nom_Topic"
+        android:layout_width="144dp"
+        android:layout_height="106dp"
+        android:hint="@string/btn_Nom_Topic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.392" />
+
+    <TextView
+        android:id="@+id/textView_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_Titre5"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
         android:id="@+id/btn_Annuler"
         android:layout_width="112dp"
         android:layout_height="58dp"

@@ -17,5 +17,6 @@
     <string name="btn_Valider">Valider</string>
     <string name="btn_Logout">Logout</string>
     <string name="btn_Paramètres">Paramètres</string>
+    <string name="btn_Nom_Topic">Nom du Topic</string>
     <string name="btn_Annuler">Annuler</string>
     </resources>

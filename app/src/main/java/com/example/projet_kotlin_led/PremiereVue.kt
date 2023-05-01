@@ -3,6 +3,7 @@ package com.example.projet_kotlin_led
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -10,6 +11,7 @@ import android.widget.Toast
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
+import androidx.appcompat.app.AlertDialog
 
 class PremiereVue : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,15 @@ class PremiereVue : AppCompatActivity() {
         }
     }
 
+    fun showErrorDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Erreur")
+        builder.setMessage("Identifiant ou mot de passe incorrect")
+        builder.setPositiveButton("OK") { dialog, which -> }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.show()
+    }
+
     fun sendLoginRequest(identifiant: String, mdp: String) {
         val client = OkHttpClient()
         val formBody = FormBody.Builder()
@@ -31,7 +42,7 @@ class PremiereVue : AppCompatActivity() {
             .add("mdp", mdp)
             .build()
         val request = Request.Builder()
-            .url("http://172.16.7.236:8080/projet_leds/connexion.php")
+            .url("http://192.168.107.172:8080/projet_leds/connexion.php")
             .post(formBody)
             .build()
 
@@ -49,7 +60,10 @@ class PremiereVue : AppCompatActivity() {
                 // Gestion des erreurs
                 Log.e("ERROR1", "Login request failed", e)
                 runOnUiThread {
-                    Toast.makeText(this@PremiereVue, "Problème de connexion", Toast.LENGTH_SHORT).show()
+                    val builder = AlertDialog.Builder(this@PremiereVue)
+                    builder.setMessage("Problème de connexion")
+                    builder.setPositiveButton("OK", null)
+                    builder.show()
                 }
             }
         })
@@ -64,13 +78,23 @@ class PremiereVue : AppCompatActivity() {
         }
 
         val jsonObject = JSONObject(responseBody)
-        val success = jsonObject.getInt("success")
-        if (success == 1) {
-            val intent = Intent(this@PremiereVue, SecondeVue::class.java)
-            startActivity(intent)
+        if (jsonObject.has("success")) {
+            val success = jsonObject.getInt("success")
+            if (success == 1) {
+                val intent = Intent(this@PremiereVue, SecondeVue::class.java)
+                startActivity(intent)
+            } else {
+                runOnUiThread {
+                    AlertDialog.Builder(this@PremiereVue)
+                        .setTitle("Erreur")
+                        .setMessage("Identifiant ou mot de passe incorrect")
+                        .setPositiveButton("OK", null)
+                        .show()
+                }
+            }
         } else {
             runOnUiThread {
-                Toast.makeText(this, "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Réponse invalide de l'API", Toast.LENGTH_SHORT).show()
             }
         }
     }
