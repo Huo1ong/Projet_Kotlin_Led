@@ -54,7 +54,7 @@ class PremiereVue : AppCompatActivity() {
             .add("mdp", mdp)
             .build()
         val request = Request.Builder()
-            .url("http://192.168.107.172:8080/projet_leds/connexion.php")
+            .url("http://172.16.7.236:8080/projet_leds/connexion.php")
             .post(formBody)
             .build()
 
