@@ -39,6 +39,20 @@
         app:layout_constraintVertical_bias="0.065" />
 
     <Button
+        android:id="@+id/btn_Langues"
+        android:layout_width="198dp"
+        android:layout_height="40dp"
+        android:background="#576D75"
+        android:hint="@string/btn_Langues"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127" />
+
+    <Button
         android:id="@+id/btn_Nom_Topic"
         android:layout_width="144dp"
         android:layout_height="106dp"
@@ -49,7 +63,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.392" />
-
 
     <TextView
         android:id="@+id/textView_message"
@@ -65,32 +78,18 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <Button
-        android:id="@+id/btn_Langues"
-        android:layout_width="91dp"
-        android:layout_height="48dp"
-        android:background="#576D75"
-        android:hint="@string/btn_Langues"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
-
-    <Button
         android:id="@+id/btn_Annuler"
-        android:layout_width="121dp"
-        android:layout_height="59dp"
+        android:layout_width="112dp"
+        android:layout_height="58dp"
         android:background="#576D75"
         android:hint="@string/btn_Annuler"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintVertical_bias="0.78" />
 
     <ImageView
         android:id="@+id/imageView3"
