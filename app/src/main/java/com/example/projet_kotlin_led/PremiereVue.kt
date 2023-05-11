@@ -24,6 +24,12 @@ class PremiereVue : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_premiere_vue)
 
+        val btnPageSuivante = findViewById<Button>(R.id.btn_PageSuivante)
+        btnPageSuivante.setOnClickListener {
+            val Intent = Intent(this, SecondeVue::class.java)
+            startActivity(Intent)
+        }
+
         // Initialisation du bouton de connexion et ajout d'un listener sur le clic du bouton
         val buttonConnexion = findViewById<Button>(R.id.btn_Valider_Connexion)
         buttonConnexion.setOnClickListener {

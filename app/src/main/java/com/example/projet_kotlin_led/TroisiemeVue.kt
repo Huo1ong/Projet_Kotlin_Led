@@ -7,8 +7,11 @@
 package com.example.projet_kotlin_led
 
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -17,6 +20,7 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended
 import org.eclipse.paho.client.mqttv3.MqttClient
 import org.eclipse.paho.client.mqttv3.MqttMessage
+import java.util.*
 
 class TroisiemeVue : AppCompatActivity() {
 

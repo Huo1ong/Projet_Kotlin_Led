@@ -111,6 +111,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.676" />
 
+    <Button
+        android:id="@+id/btn_PageSuivante"
+        android:layout_width="112dp"
+        android:layout_height="58dp"
+        android:background="#576D75"
+        android:hint="@string/btn_PageSuivante"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="312dp"
