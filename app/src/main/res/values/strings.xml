@@ -25,4 +25,11 @@
 
     <!-- Gestion de la langue -->
     <string name="langue">fr</string>
+
+    <!-- Combobox -->
+    <string-array name="spinner_options">
+        <item>Français</item>
+        <item>Anglais</item>
+        <item>Japonais</item>
+    </string-array>
 </resources>

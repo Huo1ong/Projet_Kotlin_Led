@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended
@@ -40,6 +40,24 @@ class TroisiemeVue : AppCompatActivity() {
         btnAnnuler.setOnClickListener {
             val Intent = Intent(this, SecondeVue::class.java)
             startActivity(Intent)
+        }
+
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        val options = resources.getStringArray(R.array.spinner_options)
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedItem = parent.getItemAtPosition(position) as String
+                // Faites quelque chose avec l'option sélectionnée
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Gérer l'absence de sélection
+            }
         }
 
         // Create an instance of MqttAndroidClient
