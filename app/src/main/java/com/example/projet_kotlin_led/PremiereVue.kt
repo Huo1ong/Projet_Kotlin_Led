@@ -65,6 +65,22 @@ class PremiereVue : AppCompatActivity() {
             btnValiderConnexion.hint = resources.getString(R.string.btn_Valider_en)
             btnPageSuivante.hint = resources.getString(R.string.btn_PageSuivante_en)
         }
+        else if (selectedLanguage == "es")
+        {
+            //Textes
+            txtViewTitre1.hint = resources.getString(R.string.titre_es)
+            txtViewTitre2.hint = resources.getString(R.string.sous_titre_es)
+            txtViewLogin.hint = resources.getString(R.string.login_es)
+            textViewMdp.hint = resources.getString(R.string.mdp_es)
+
+            //EditText
+            editTextLogin.hint = resources.getString(R.string.login_es)
+            editTextMdp.hint = resources.getString(R.string.mdp_es)
+
+            //Boutons
+            btnValiderConnexion.hint = resources.getString(R.string.btn_Valider_es)
+            btnPageSuivante.hint = resources.getString(R.string.btn_PageSuivante_es)
+        }
         else
         {
             //Textes

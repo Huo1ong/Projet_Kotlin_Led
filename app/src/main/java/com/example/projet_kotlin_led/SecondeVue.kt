@@ -66,6 +66,21 @@ class SecondeVue : AppCompatActivity() {
             btnDeconnexion.hint = resources.getString(R.string.btn_Logout_en)
             btnParametres.hint = resources.getString(R.string.btn_Paramètres_en)
         }
+        else if (selectedLanguage == "es")
+        {
+            //Textes
+            txtViewTitre1.hint = resources.getString(R.string.titre_es)
+            txtViewTitre2.hint = resources.getString(R.string.sous_titre_es)
+            txtViewCouleur.hint = resources.getString(R.string.couleur_es)
+
+            //Boutons
+            btnCycleCouleur1.hint = resources.getString(R.string.btn_Cycle_Couleur1_es)
+            btnCycleCouleur2.hint = resources.getString(R.string.btn_Cycle_Couleur2_es)
+            btnCycleCouleur3.hint = resources.getString(R.string.btn_Cycle_Couleur3_es)
+            btnCycleCouleur4.hint = resources.getString(R.string.btn_Cycle_Couleur4_es)
+            btnDeconnexion.hint = resources.getString(R.string.btn_Logout_es)
+            btnParametres.hint = resources.getString(R.string.btn_Paramètres_es)
+        }
         else
         {
             //Textes

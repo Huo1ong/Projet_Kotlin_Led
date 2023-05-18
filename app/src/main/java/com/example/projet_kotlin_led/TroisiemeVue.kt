@@ -168,6 +168,15 @@ class TroisiemeVue : AppCompatActivity() {
             btnAnnuler.hint = resources.getString(R.string.btn_Annuler_en)
             btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic_en)
         }
+        else if(selectedLanguage == "es") {
+            //Textes
+            txtViewTitre4.hint = resources.getString(R.string.titre_es)
+            txtViewTitre5.hint = resources.getString(R.string.sous_titre_es)
+
+            //Boutons
+            btnAnnuler.hint = resources.getString(R.string.btn_Annuler_es)
+            btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic_es)
+        }
         else {
             btnAnnuler.hint = resources.getString(R.string.btn_Annuler)
             btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic)
