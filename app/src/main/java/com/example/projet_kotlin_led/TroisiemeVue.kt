@@ -177,7 +177,21 @@ class TroisiemeVue : AppCompatActivity() {
             btnAnnuler.hint = resources.getString(R.string.btn_Annuler_es)
             btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic_es)
         }
+        else if(selectedLanguage == "ja") {
+            //Textes
+            txtViewTitre4.hint = resources.getString(R.string.titre_ja)
+            txtViewTitre5.hint = resources.getString(R.string.sous_titre_ja)
+
+            //Boutons
+            btnAnnuler.hint = resources.getString(R.string.btn_Annuler_ja)
+            btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic_ja)
+        }
         else {
+            //Textes
+            txtViewTitre4.hint = resources.getString(R.string.titre)
+            txtViewTitre5.hint = resources.getString(R.string.sous_titre)
+
+            //Boutons
             btnAnnuler.hint = resources.getString(R.string.btn_Annuler)
             btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic)
         }
