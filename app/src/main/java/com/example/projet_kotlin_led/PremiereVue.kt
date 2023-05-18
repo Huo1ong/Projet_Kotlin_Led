@@ -6,13 +6,16 @@
 
 package com.example.projet_kotlin_led
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import okhttp3.*
 import org.json.JSONObject
@@ -20,14 +23,85 @@ import java.io.IOException
 import androidx.appcompat.app.AlertDialog
 
 class PremiereVue : AppCompatActivity() {
+
+    private var selectedLanguage: String = "fr" // Par défaut, le français est sélectionné
+
+    private fun saveSelectedLanguage() {
+        val sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("selectedLanguage", selectedLanguage)
+        editor.commit() // Utilisez commit() au lieu de apply()
+    }
+
+    private fun updateButtonHints() {
+        //Textes
+        val txtViewTitre1 = findViewById<TextView>(R.id.textView_Titre1)
+        val txtViewTitre2 = findViewById<TextView>(R.id.textView_Titre2)
+        val txtViewLogin = findViewById<TextView>(R.id.textView_Login)
+        val textViewMdp = findViewById<TextView>(R.id.textView_Mdp)
+
+        //EditText
+        val editTextLogin = findViewById<EditText>(R.id.editText_Login)
+        val editTextMdp = findViewById<EditText>(R.id.editText_Mdp)
+
+        //Boutons
+        val btnValiderConnexion = findViewById<Button>(R.id.btn_Valider_Connexion)
+        val btnPageSuivante = findViewById<Button>(R.id.btn_PageSuivante)
+
+
+        if (selectedLanguage == "en")
+        {
+            //Textes
+            txtViewTitre1.hint = resources.getString(R.string.titre_en)
+            txtViewTitre2.hint = resources.getString(R.string.sous_titre_en)
+            txtViewLogin.hint = resources.getString(R.string.login_en)
+            textViewMdp.hint = resources.getString(R.string.mdp_en)
+
+            //EditText
+            editTextLogin.hint = resources.getString(R.string.login_en)
+            editTextMdp.hint = resources.getString(R.string.mdp_en)
+
+            //Boutons
+            btnValiderConnexion.hint = resources.getString(R.string.btn_Valider_en)
+            btnPageSuivante.hint = resources.getString(R.string.btn_PageSuivante_en)
+        }
+        else
+        {
+            //Textes
+            txtViewTitre1.hint = resources.getString(R.string.titre)
+            txtViewTitre2.hint = resources.getString(R.string.sous_titre)
+            txtViewLogin.hint = resources.getString(R.string.login)
+            textViewMdp.hint = resources.getString(R.string.mdp)
+
+            //EditText
+            editTextLogin.hint = resources.getString(R.string.login)
+            editTextMdp.hint = resources.getString(R.string.mdp)
+
+            //Boutons
+            btnValiderConnexion.hint = resources.getString(R.string.btn_Valider)
+            btnPageSuivante.hint = resources.getString(R.string.btn_PageSuivante)
+        }
+
+        // Redessinez manuellement les vues pour refléter les changements de langue
+        redrawViews()
+        // Mettez à jour les "hints" des autres boutons de la même manière
+    }
+
+    private fun redrawViews() {
+        val rootView: View = findViewById(android.R.id.content)
+        rootView.invalidate()
+        rootView.requestLayout()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_premiere_vue)
 
         val btnPageSuivante = findViewById<Button>(R.id.btn_PageSuivante)
         btnPageSuivante.setOnClickListener {
-            val Intent = Intent(this, SecondeVue::class.java)
-            startActivity(Intent)
+            val intent = Intent(this@PremiereVue, SecondeVue::class.java)
+            intent.putExtra("selectedLanguage", selectedLanguage)
+            startActivityForResult(intent, 1)
         }
 
         // Initialisation du bouton de connexion et ajout d'un listener sur le clic du bouton
@@ -38,6 +112,30 @@ class PremiereVue : AppCompatActivity() {
             val mdp = findViewById<EditText>(R.id.editText_Mdp).text.toString()
             // Envoi de la demande de connexion au serveur via une fonction dédiée
             sendLoginRequest(identifiant, mdp)
+        }
+
+        updateButtonHints()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            val selectedLanguage = data?.getStringExtra("selectedLanguage")
+            if (selectedLanguage != null && selectedLanguage != this.selectedLanguage) {
+                this.selectedLanguage = selectedLanguage
+                updateButtonHints()
+            }
+        }
+        saveSelectedLanguage() // Enregistrez la langue sélectionnée avant de quitter l'activité
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val selectedLanguage = intent.getStringExtra("selectedLanguage")
+        if (selectedLanguage != null && selectedLanguage != this.selectedLanguage) {
+            this.selectedLanguage = selectedLanguage
+            updateButtonHints()
         }
     }
 

@@ -6,6 +6,7 @@
 
 package com.example.projet_kotlin_led
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -24,11 +25,18 @@ import java.util.*
 
 class TroisiemeVue : AppCompatActivity() {
 
-    private val TAG = "SecondeVue"
     private val serverUri = "tcp://172.16.5.202:1883"
     private val clientId = "pi"
     private val topic = "LaPorte/LEDs"
     private val qos = 2 // Quality of Service
+
+    private var selectedLanguage: String = "fr" // Par défaut, le français est sélectionné
+
+    private fun redrawViews() {
+        val rootView: View = findViewById(android.R.id.content)
+        rootView.invalidate()
+        rootView.requestLayout()
+    }
 
     lateinit var mqttClient: MqttAndroidClient
 
@@ -36,10 +44,13 @@ class TroisiemeVue : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_troisieme_vue)
 
+        selectedLanguage = intent.getStringExtra("selectedLanguage") ?: selectedLanguage
+
         val btnAnnuler = findViewById<Button>(R.id.btn_Annuler)
         btnAnnuler.setOnClickListener {
-            val Intent = Intent(this, SecondeVue::class.java)
-            startActivity(Intent)
+            val intent = Intent(this@TroisiemeVue, SecondeVue::class.java)
+            intent.putExtra("selectedLanguage", selectedLanguage)
+            startActivityForResult(intent, 1)
         }
 
         val spinner = findViewById<Spinner>(R.id.spinner)
@@ -49,10 +60,33 @@ class TroisiemeVue : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
+        val languageIndex = when (selectedLanguage) {
+            "fr" -> 0
+            "en" -> 1
+            "es" -> 2
+            "ja" -> 3
+            else -> 0
+        }
+        spinner.setSelection(languageIndex)
+
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedItem = parent.getItemAtPosition(position) as String
-                // Faites quelque chose avec l'option sélectionnée
+                val newLanguage = when (position) {
+                    0 -> "fr" // Français
+                    1 -> "en" // Anglais
+                    2 -> "es" // Espagnol
+                    3 -> "ja" // Japonais
+                    else -> "fr" // Par défaut, sélectionnez le français
+                }
+
+                if (newLanguage != selectedLanguage) {
+                    selectedLanguage = newLanguage
+                    updateTextsLanguage(selectedLanguage)
+
+                    val intent = Intent()
+                    intent.putExtra("selectedLanguage", selectedLanguage) // Ajoutez la langue sélectionnée à l'intent
+                    setResult(RESULT_OK, intent)
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -60,8 +94,15 @@ class TroisiemeVue : AppCompatActivity() {
             }
         }
 
+        // Restaurer la langue sélectionnée lors du retour à cette vue
+        updateTextsLanguage(selectedLanguage)
+
         // Create an instance of MqttAndroidClient
         mqttClient = MqttAndroidClient(this, serverUri, clientId)
+
+        if (!mqttClient.isConnected) {
+            mqttClient.connect()
+        }
 
         // Set the callback for receiving messages
         mqttClient.setCallback(object : MqttCallbackExtended {
@@ -99,5 +140,60 @@ class TroisiemeVue : AppCompatActivity() {
 
         // Connect to the broker
         mqttClient.connect()
+    }
+
+    private fun updateTextsLanguage(language: String) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val resources: Resources = applicationContext.resources
+        val configuration: Configuration = resources.configuration
+        configuration.locale = locale
+        resources.updateConfiguration(configuration, resources.displayMetrics)
+
+        //Textes
+        val txtViewTitre4 = findViewById<TextView>(R.id.textView_Titre4)
+        val txtViewTitre5 = findViewById<TextView>(R.id.textView_Titre5)
+
+        //Boutons
+        val btnAnnuler = findViewById<Button>(R.id.btn_Annuler)
+        val btnNomTopic = findViewById<Button>(R.id.btn_Nom_Topic)
+
+        if (selectedLanguage == "en") {
+            //Textes
+            txtViewTitre4.hint = resources.getString(R.string.titre_en)
+            txtViewTitre5.hint = resources.getString(R.string.sous_titre_en)
+
+            //Boutons
+            btnAnnuler.hint = resources.getString(R.string.btn_Annuler_en)
+            btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic_en)
+        }
+        else {
+            btnAnnuler.hint = resources.getString(R.string.btn_Annuler)
+            btnNomTopic.hint = resources.getString(R.string.btn_Nom_Topic)
+        }
+
+        // Redessinez manuellement les vues pour refléter les changements de langue
+        redrawViews()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            val selectedLanguage = data?.getStringExtra("selectedLanguage")
+            if (selectedLanguage != null && selectedLanguage != this.selectedLanguage) {
+                this.selectedLanguage = selectedLanguage
+                updateTextsLanguage(selectedLanguage)
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (mqttClient.isConnected) {
+            mqttClient.disconnect()
+        }
+        mqttClient.close()
     }
 }

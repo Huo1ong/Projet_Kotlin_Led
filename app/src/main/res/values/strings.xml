@@ -26,10 +26,98 @@
     <!-- Gestion de la langue -->
     <string name="langue">fr</string>
 
-    <!-- Combobox -->
+    <!-- ................................................................................... -->
+
+    <!-- ANGLAIS -->
+    <!-- Nom Application -->
+    <string name="app_name_en">Project_Kotlin_Led</string>
+
+    <!-- TextView - EditText -->
+    <string name="titre_en">Terminal Project - Technology Project</string>
+    <string name="sous_titre_en">LEDs Project - Guillou Quentin</string>
+    <string name="login_en">Login</string>
+    <string name="mdp_en">Password</string>
+    <string name="couleur_en">Colors</string>
+
+    <!-- Boutons -->
+    <string name="btn_Cycle_Couleur1_en">Color cycle #1</string>
+    <string name="btn_Cycle_Couleur2_en">Color cycle #2</string>
+    <string name="btn_Cycle_Couleur3_en">Color cycle #3</string>
+    <string name="btn_Cycle_Couleur4_en">Color cycle #4</string>
+    <string name="btn_Valider_en">Validate</string>
+    <string name="btn_Logout_en">Logout</string>
+    <string name="btn_Paramètres_en">Settings</string>
+    <string name="btn_Langues_en">Change for French</string>
+    <string name="btn_Nom_Topic_en">Topic Name</string>
+    <string name="btn_PageSuivante_en">Next page</string>
+    <string name="btn_Annuler_en">Cancel</string>
+
+    <!-- Gestion de la langue -->
+    <string name="langue_en">en</string>
+
+    <!-- ................................................................................... -->
+
+    <!-- ESPAGNOL -->
+    <!-- Nom Application -->
+    <string name="app_name_es">Proyecto_Kotlin_Led</string>
+
+    <!-- TextView - EditText -->
+    <string name="titre_es">Proyecto Terminal - Proyecto Tecnológico</string>
+    <string name="sous_titre_es">Proyecto LED - Guillou Quentin</string>
+    <string name="login_es">Acceso</string>
+    <string name="mdp_es">Contraseña</string>
+    <string name="couleur_es">Colores</string>
+
+    <!-- Boutons -->
+    <string name="btn_Cycle_Couleur1_es">Ciclo de color #1</string>
+    <string name="btn_Cycle_Couleur2_es">Ciclo de color #2</string>
+    <string name="btn_Cycle_Couleur3_es">Ciclo de color #3</string>
+    <string name="btn_Cycle_Couleur4_es">Ciclo de color #4</string>
+    <string name="btn_Valider_es">Validar</string>
+    <string name="btn_Logout_es">Cerrar sesión</string>
+    <string name="btn_Paramètres_es">Ajustes</string>
+    <string name="btn_Nom_Topic_es">Nombre del tema</string>
+    <string name="btn_PageSuivante_es">Siguiente página</string>
+    <string name="btn_Annuler_es">Cancelar</string>
+
+    <!-- Gestion de la langue -->
+    <string name="langue_es">es</string>
+
+    <!-- ................................................................................... -->
+
+    <!-- JAPONAIS -->
+    <!-- Nom Application -->
+    <string name="app_name_ja">Purojekuto _ Kotlin _ Led</string>
+
+    <!-- TextView - EditText -->
+    <string name="titre_ja">Tāminarupurojekuto - gijutsu purojekuto</string>
+    <string name="sous_titre_ja">Reddo purojekuto - Guillou Quentin</string>
+    <string name="login_ja">Akusesu</string>
+    <string name="mdp_ja">Pasuwādo</string>
+    <string name="couleur_ja">Iro</string>
+
+    <!-- Boutons -->
+    <string name="btn_Cycle_Couleur1_ja">Karāsaikuru #1</string>
+    <string name="btn_Cycle_Couleur2_ja">Karāsaikuru #2</string>
+    <string name="btn_Cycle_Couleur3_ja">Karāsaikuru #3</string>
+    <string name="btn_Cycle_Couleur4_ja">Karāsaikuru #4</string>
+    <string name="btn_Valider_ja">Kenshō</string>
+    <string name="btn_Logout_ja">Sain ofu</string>
+    <string name="btn_Paramètres_ja">Settei</string>
+    <string name="btn_Nom_Topic_ja">Tēma-mei</string>
+    <string name="btn_PageSuivante_ja">Tsugi no pēji</string>
+    <string name="btn_Annuler_ja">Kyanseru</string>
+
+    <!-- Gestion de la langue -->
+    <string name="langue_ja">ja</string>
+
+    <!-- ................................................................................... -->
+
+    <!-- COMBOBOX -->
     <string-array name="spinner_options">
         <item>Français</item>
         <item>Anglais</item>
+        <item>Espagnol</item>
         <item>Japonais</item>
     </string-array>
 </resources>
