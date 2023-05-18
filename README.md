@@ -23,6 +23,18 @@ Installation
 
 	Compilez le code source :
 		- kotlinc src/main.kt -include-runtime -d mon-projet.jar
+		
+Versions		
+	- master
+		° création de l'application
+		° design de l'application
+	- version2
+		° passage entre les vues
+	- version3
+		° changement de couleur
+		° login
+	- version4
+		° changement de langue
 
 Auteurs
 	Guillou QUentin - @Huo1ong
